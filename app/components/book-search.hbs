@@ -1,0 +1,40 @@
+<form {{on "submit" this.search}}>
+  <div class="field">
+    <label class="label" for="book-query">Search by author, title, ISBN, or keyword</label>
+    <div class="control">
+      <Input
+        type="text"
+        class="input"
+        id="book-query"
+        @value={{this.query}}
+        placeholder="harry potter"
+        data-test-input="query"
+      />
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <button
+        type="submit"
+        class="button is-link"
+        data-test-button="submit"
+      >
+        Lookup
+      </button>
+    </div>
+    <div class="control">
+      <button
+        type="button"
+        class="button is-secondary"
+        {{on "click" this.clear}}
+        data-test-button="clear"
+      >
+        Clear
+      </button>
+    </div>
+  </div>
+</form>
+
+{{#if this.results}}
+  <BookSearchResults @results={{this.results}} />
+{{/if}}

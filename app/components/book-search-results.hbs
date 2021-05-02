@@ -1,0 +1,13 @@
+<div class="mt-5" data-test-results>
+  <h2 class="subtitle mb-3">
+    {{#if this.hasTooManyResults}}
+      {{@results.totalItems}} total results, showing first 5. Try a more specific search.
+    {{else}}
+      {{@results.totalItems}} total results, showing all.
+    {{/if}}
+  </h2>
+
+  {{#each this.displayResults as |result|}}
+    <p data-test-result-item>{{result.volumeInfo.title}} by {{comma-join result.volumeInfo.authors}}</p>
+  {{/each}}
+</div>
